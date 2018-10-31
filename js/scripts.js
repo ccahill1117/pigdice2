@@ -67,6 +67,7 @@ $(document).ready(function() {
 
   $("#PlayerOneHold").click(function(event) {
     Player1.Hold();
+      alert("It's Now Player2's Turn");
     $("#totalScoreOne").text(Player1.total);
     Player1.CheckForHundred();
      $("#playerOneScore").text(Player1.total);
@@ -82,6 +83,7 @@ $(document).ready(function() {
 
   $("#PlayerTwoHold").click(function(event) {
     Player2.Hold();
+    alert("It's Now Player1's Turn");
     $("#totalScoreTwo").text(Player2.total);
     Player2.CheckForHundred();
     $("#playerTwoScore").text(Player2.total);
