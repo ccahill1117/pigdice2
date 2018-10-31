@@ -15,6 +15,7 @@ Player.prototype.Roll = function(Roll) {
   }
   else if (Roll = 1) {
     this.roll = 0;
+    alert("you rolled a one! your turn is over.");
   }
   return this.roll;
   this.roll.push(this.temp);
@@ -59,22 +60,45 @@ var Player2 = new Player;
 
 $(document).ready(function() {
   $("#PlayerOneRoll").click(function(event) {
+
   Player1.Roll(RollDice());
   Player1.Temp();
+  $("#currentRollOne").text(Player1.roll);
+  $("#turnTotalOne").text(Player1.temp);
 
-    console.log(Player1.roll);
-    console.log(Player1.temp);
-    console.log(Player1.total);
-  });
+   });
 
   $("#PlayerOneHold").click(function(event) {
     // Player1.roll = RollDice();
   Player1.Hold();
+  $("#totalScoreOne").text(Player1.total);
   Player1.CheckForHundred();
-
   console.log(Player1.roll);
   console.log(Player1.temp);
   console.log(Player1.total);
+
 });
+
+$("#PlayerTwoRoll").click(function(event) {
+
+Player2.Roll(RollDice());
+Player2.Temp();
+$("#currentRollTwo").text(Player2.roll);
+$("#turnTotalTwo").text(Player2.temp);
+
+ });
+
+$("#PlayerTwoHold").click(function(event) {
+  // Player1.roll = RollDice();
+Player2.Hold();
+$("#totalScoreTwo").text(Player2.total);
+Player2.CheckForHundred();
+console.log(Player2.roll);
+console.log(Player2.temp);
+console.log(Player2.total);
+
+});
+
+
 
 })
