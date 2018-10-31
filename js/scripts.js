@@ -2,7 +2,8 @@
 function Player(roll, temp, total) {
   this.roll = 0,
   this.temp = 0,
-  this.total = 0
+  this.total = 0,
+  this.turn = ""
 }
 
 function RollDice() {
@@ -15,10 +16,9 @@ Player.prototype.Roll = function(Roll) {
   }
   else if (Roll = 1) {
     this.roll = 0;
-    // alert("you rolled a one! your turn is over.");
+    // this.turn = "it's not your turn!"
   }
   return this.roll;
-  // this.roll.push(this.temp);
 }
 
 Player.prototype.Temp = function() {
@@ -27,7 +27,6 @@ Player.prototype.Temp = function() {
   }
   else if (this.roll = 1) {
     this.temp = 0;
-
   }
 }
 
@@ -37,7 +36,7 @@ Player.prototype.Hold = function() {
   this.temp = 0;
 }
 
-Player.prototype.NewGame = function(){
+Player.prototype.NewGame = function() {
   this.total = 0;
   this.temp = 0;
   this.turn = 0;
@@ -45,8 +44,16 @@ Player.prototype.NewGame = function(){
 
 Player.prototype.CheckForHundred = function(){
   if(this.total >= 100){
-    console.log("This Player is the winner")
+    alert("This Player is the winner");
   }
+}
+
+Player.prototype.SwitchTo = function() {
+  this.turn = "it's your turn";
+}
+
+Player.prototype.SwitchOff = function() {
+  this.turn = "it's NOT your turn";
 }
 
 
@@ -62,16 +69,24 @@ $(document).ready(function() {
     Player1.Temp();
     $("#currentRollOne").text(Player1.roll);
     $("#turnTotalOne").text(Player1.temp);
+    // $("#turnOne").text(Player1.turn);
 
  });
 
   $("#PlayerOneHold").click(function(event) {
     Player1.Hold();
-      alert("It's Now Player2's Turn");
+      // alert("It's Now Player2's Turn");
+    Player1.SwitchOff();
+    $("#turnOne").text(Player1.turn);
+    Player2.SwitchTo();
+    $("#turnTwo").text(Player2.turn);
     $("#totalScoreOne").text(Player1.total);
     Player1.CheckForHundred();
      $("#playerOneScore").text(Player1.total);
+
   });
+
+
 
   $("#PlayerTwoRoll").click(function(event) {
     Player2.Roll(RollDice());
@@ -83,11 +98,31 @@ $(document).ready(function() {
 
   $("#PlayerTwoHold").click(function(event) {
     Player2.Hold();
-    alert("It's Now Player1's Turn");
+    // alert("It's Now Player1's Turn");
     $("#totalScoreTwo").text(Player2.total);
     Player2.CheckForHundred();
     $("#playerTwoScore").text(Player2.total);
+    Player2.SwitchOff();
+    $("#turnTwo").text(Player2.turn);
+    Player1.SwitchTo();
+    $("#turnOne").text(Player1.turn);
   });
+
+  $("#newGame").click(function(event) {
+    Player1.NewGame();
+    Player2.NewGame();
+    $("#currentRollOne").text("");
+    $("#turnTotalOne").text("");
+    $("#totalScoreOne").text("");
+
+    $("#currentRollTwo").text("");
+    $("#turnTotalTwo").text("");
+    $("#totalScoreTwo").text("");
+
+    $("#playerOneScore").text("");
+    $("#playerTwoScore").text("");
+
+  })
 
 
 })

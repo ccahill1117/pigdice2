@@ -9,3 +9,22 @@
 #player2Output{
   /* display: none; */
 }
+
+body{
+  background-color: #f4bf42;
+  align-items:
+}
+
+h1{
+  text-align: center;
+}
+
+.container{
+  align-content: center;
+}
+
+.jumbotron{
+  background-color: black;
+  color: white;
+  margin-bottom: 15%;
+}
