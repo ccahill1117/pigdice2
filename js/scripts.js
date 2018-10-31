@@ -18,7 +18,7 @@ Player.prototype.Roll = function(Roll) {
     alert("you rolled a one! your turn is over.");
   }
   return this.roll;
-  this.roll.push(this.temp);
+  // this.roll.push(this.temp);
 }
 
 Player.prototype.Temp = function() {
@@ -62,6 +62,7 @@ $(document).ready(function() {
   $("#PlayerOneRoll").click(function(event) {
 
   Player1.Roll(RollDice());
+  $("#diceRoll").html("<img src=img/" + Player1.Roll(RollDice()) + ".png>");
   Player1.Temp();
   $("#currentRollOne").text(Player1.roll);
   $("#turnTotalOne").text(Player1.temp);
@@ -73,18 +74,20 @@ $(document).ready(function() {
   Player1.Hold();
   $("#totalScoreOne").text(Player1.total);
   Player1.CheckForHundred();
-  console.log(Player1.roll);
-  console.log(Player1.temp);
-  console.log(Player1.total);
+
 
 });
 
 $("#PlayerTwoRoll").click(function(event) {
 
-Player2.Roll(RollDice());
-Player2.Temp();
-$("#currentRollTwo").text(Player2.roll);
-$("#turnTotalTwo").text(Player2.temp);
+  Player2.Roll(RollDice());
+  $("#diceRoll").html("<img src=img/" + Player2.Roll(RollDice()) + ".png>");
+
+  Player2.Temp();
+  $("#currentRollTwo").text(Player2.roll);
+  $("#turnTotalTwo").text(Player2.temp);
+
+
 
  });
 
