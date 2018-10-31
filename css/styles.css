@@ -1,3 +1,11 @@
 #diceRoll {
   width : 200px;
 }
+
+#player1Output{
+  /* display: none; */
+}
+
+#player2Output{
+  /* display: none; */
+}

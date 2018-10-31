@@ -15,7 +15,7 @@ Player.prototype.Roll = function(Roll) {
   }
   else if (Roll = 1) {
     this.roll = 0;
-    alert("you rolled a one! your turn is over.");
+    // alert("you rolled a one! your turn is over.");
   }
   return this.roll;
   // this.roll.push(this.temp);
@@ -27,6 +27,7 @@ Player.prototype.Temp = function() {
   }
   else if (this.roll = 1) {
     this.temp = 0;
+
   }
 }
 
@@ -48,60 +49,43 @@ Player.prototype.CheckForHundred = function(){
   }
 }
 
-function attachClickListeners() {
-  $("#click").on("click", "button", function() {
-    CurrentRoll.CurrentRoll(this.id);
-  });
-}
 
 var Player1 = new Player;
 var Player2 = new Player;
 
 
 $(document).ready(function() {
+
   $("#PlayerOneRoll").click(function(event) {
-
-  Player1.Roll(RollDice());
-  $("#diceRoll").html("<img src=img/" + Player1.Roll(RollDice()) + ".png>");
-  Player1.Temp();
-  $("#currentRollOne").text(Player1.roll);
-  $("#turnTotalOne").text(Player1.temp);
-
-   });
-
-  $("#PlayerOneHold").click(function(event) {
-    // Player1.roll = RollDice();
-  Player1.Hold();
-  $("#totalScoreOne").text(Player1.total);
-  Player1.CheckForHundred();
-
-
-});
-
-$("#PlayerTwoRoll").click(function(event) {
-
-  Player2.Roll(RollDice());
-  $("#diceRoll").html("<img src=img/" + Player2.Roll(RollDice()) + ".png>");
-
-  Player2.Temp();
-  $("#currentRollTwo").text(Player2.roll);
-  $("#turnTotalTwo").text(Player2.temp);
-
-
+    Player1.Roll(RollDice());
+    $("#diceRoll").html("<img src=img/" + Player1.Roll(RollDice()) + ".png>");
+    Player1.Temp();
+    $("#currentRollOne").text(Player1.roll);
+    $("#turnTotalOne").text(Player1.temp);
 
  });
 
-$("#PlayerTwoHold").click(function(event) {
-  // Player1.roll = RollDice();
-Player2.Hold();
-$("#totalScoreTwo").text(Player2.total);
-Player2.CheckForHundred();
-console.log(Player2.roll);
-console.log(Player2.temp);
-console.log(Player2.total);
+  $("#PlayerOneHold").click(function(event) {
+    Player1.Hold();
+    $("#totalScoreOne").text(Player1.total);
+    Player1.CheckForHundred();
+     $("#playerOneScore").text(Player1.total);
+  });
 
-});
+  $("#PlayerTwoRoll").click(function(event) {
+    Player2.Roll(RollDice());
+    $("#diceRoll").html("<img src=img/" + Player2.Roll(RollDice()) + ".png>");
+    Player2.Temp();
+    $("#currentRollTwo").text(Player2.roll);
+    $("#turnTotalTwo").text(Player2.temp);
+  });
 
+  $("#PlayerTwoHold").click(function(event) {
+    Player2.Hold();
+    $("#totalScoreTwo").text(Player2.total);
+    Player2.CheckForHundred();
+    $("#playerTwoScore").text(Player2.total);
+  });
 
 
 })
