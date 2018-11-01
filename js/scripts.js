@@ -124,7 +124,6 @@ $(document).ready(function() {
     $("#diceRoll").html("<img src=img/" + Player1.roll + ".png>");
     $("#currentRollOne").text(Player1.roll);
     $("#turnTotalOne").text(Player1.temp);
-    //$("#turnTwo").text(Player2.turn);
   });
 
   $("#PlayerOneHold").click(function(event) {
@@ -136,8 +135,6 @@ $(document).ready(function() {
    });
 
    $("#PlayerTwoRoll").click(function(event) {
-     // $("#turnOne").text("It's Not Your Turn");
-     // $("#turnTwo").text("It's Your Turn");
     Player2.Roll2(RollDice());
     $("#diceRoll").html("<img src=img/" + Player2.roll + ".png>");
     Player2.Temp();
