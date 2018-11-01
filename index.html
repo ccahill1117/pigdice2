@@ -13,7 +13,10 @@
     <div class="jumbotron">
     <h1>Pig Dice</h1>
   </div>
-  <div class= "container">
+  <div class="container">
+  <button type="button" class="btn btn-primary" id="startGame">
+    Press to start new game
+  </button>
     <div class="d-flex flex-row bd-highlight mb-3">
       <div class="p-2  bd-highlight" id="player1Output">
         <button type="button" name="button" id="PlayerOneRoll">Player 1 Roll!</button>
@@ -51,7 +54,6 @@
       <div id="runningScore">
         <p><strong>Player 1 Score: </strong><span id="playerOneScore"></span></p>
         <p><strong>Player 2 Score: </strong><span id="playerTwoScore"></span></p>
-        <button type="button" name="button" id="newGame">Press to start new game</button>
         </p>
       </div>
     </div>
@@ -60,16 +62,16 @@
       </div>
     </div>
   </div>
-  <form class="form-group" action="index.html" method="post" id="newPlayer">
+  <!-- <form class="form-group" action="index.html" method="post" id="newPlayer">
     <label for="new player name">new player name</label>
     <input type="text" id="newName">
     <button type="submit" name="button">enter a player</button>
-  </form>
-  <div class="container" id="playersHere">
+  </form> -->
+  <!-- <div class="container" id="playersHere">
 
   </div>
 
-  <!-- <button type="button" name="button"><span id="playerTurnButton"></span>'s' turn</button> -->
+  <button type="button" id="rollButton"><span id="turnPlayer"></span>'s' turn</button> -->
 
   </body>
 </html>
