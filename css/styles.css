@@ -34,3 +34,13 @@ h1{
   /* padding-left: 20%; */
   margin-bottom: 5%;
 }
+
+#turnOne{
+  color: brown;
+  font-weight: bold;
+}
+
+#turnTwo{
+  color: brown;
+  font-weight: bold;
+}
