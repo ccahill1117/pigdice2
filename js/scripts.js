@@ -1,5 +1,21 @@
 // Business Logic for Dice Game
-function Player(roll, temp, total) {
+function Players() {
+  this.players = [],
+  this.playerId = 0
+}
+
+Players.prototype.addPlayer = function(player) {
+  player.Id = this.playerID();
+  this.players.push(player);
+}
+
+Players.prototype.playerID = function() {
+  this.playerId += 1;
+  return this.playerId;
+}
+
+function Player(Name) {
+  this.name = Name,
   this.roll = 0,
   this.temp = 0,
   this.total = 0,
@@ -37,9 +53,10 @@ Player.prototype.Hold = function() {
 }
 
 Player.prototype.NewGame = function() {
-  this.total = 0;
+  this.roll = 0;
   this.temp = 0;
-  this.turn = 0;
+  this.total = 0;
+  this.turn = "";
 }
 
 Player.prototype.CheckForHundred = function(){
@@ -57,11 +74,33 @@ Player.prototype.SwitchOff = function() {
 }
 
 
-var Player1 = new Player;
-var Player2 = new Player;
+var players = new Players;
+
+// var Player1 = new Player;
+// var Player2 = new Player;
+
+function displayPlayerDetails(playersToDisplay) {
+  var playersList = $("div#playersHere");
+  var htmlForPlayerInfo = "";
+  playersToDisplay.players.forEach(function(player) {
+    htmlForPlayerInfo += "<div><p>" + "name:" + player.name + "<br>" + "roll score:" + player.roll + "<br>" + "temp score:" + player.temp + "<br>" + "total score:" + player.total + "<br>" + player.turn + "</p></div>";
+  })
+  playersList.html(htmlForPlayerInfo);
+};
 
 
 $(document).ready(function() {
+
+  $("#newPlayer").submit(function(event) {
+    event.preventDefault();
+    var inputtedPlayerName = $("input#newName").val();
+    $("input#newName").val("");
+    var newPlayer = new Player(inputtedPlayerName);
+    players.addPlayer(newPlayer);
+    displayPlayerDetails(players);
+
+  });
+
 
   $("#PlayerOneRoll").click(function(event) {
     Player1.Roll(RollDice());
